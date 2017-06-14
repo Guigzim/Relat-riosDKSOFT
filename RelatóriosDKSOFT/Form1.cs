@@ -24,11 +24,8 @@ namespace RelatóriosDKSOFT
             {
                 string select = gerarSelect();
 
-                FileStream file = new FileStream("C:\\Users\\guilh\\Desktop\\select.txt", FileMode.OpenOrCreate);
-                using (StreamWriter writer = new StreamWriter(file))
-                {
-                    writer.Write(select);
-                }
+                DbExecuter exec = new DbExecuter();
+                dataGridView1.DataSource = exec.getData(select);
                                
             }
             catch (Exception err)
