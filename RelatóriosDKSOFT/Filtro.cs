@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace RelatóriosDKSOFT
 {
-    public class ckbxCampo : CheckBox
+    public class Filtro
     {
-        public string Campo { get; set; }
-        public int Ordem { get; set; }
-
+        public string Nome { get; set; }
+        public string Comando { get; set; }
     }
 }

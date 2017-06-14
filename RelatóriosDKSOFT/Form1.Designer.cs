@@ -31,10 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gpbxCampos = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.ckbxCampo23 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo22 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo21 = new RelatóriosDKSOFT.ckbxCampo();
@@ -61,6 +60,8 @@
             this.ckbxCampo6 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo1 = new RelatóriosDKSOFT.ckbxCampo();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ckbxCampo2 = new RelatóriosDKSOFT.ckbxCampo();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -87,18 +88,8 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1351, 592);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Informações Cadastrais";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnGerarRelatorio
-            // 
-            this.btnGerarRelatorio.Location = new System.Drawing.Point(686, 115);
-            this.btnGerarRelatorio.Name = "btnGerarRelatorio";
-            this.btnGerarRelatorio.Size = new System.Drawing.Size(64, 46);
-            this.btnGerarRelatorio.TabIndex = 2;
-            this.btnGerarRelatorio.Text = "Gerar Relatório";
-            this.btnGerarRelatorio.UseVisualStyleBackColor = true;
-            this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
             // 
             // dataGridView1
             // 
@@ -115,8 +106,9 @@
             // 
             // gpbxCampos
             // 
+            this.gpbxCampos.Controls.Add(this.button1);
+            this.gpbxCampos.Controls.Add(this.ckbxCampo2);
             this.gpbxCampos.Controls.Add(this.btnGerarRelatorio);
-            this.gpbxCampos.Controls.Add(this.checkBox1);
             this.gpbxCampos.Controls.Add(this.ckbxCampo23);
             this.gpbxCampos.Controls.Add(this.ckbxCampo22);
             this.gpbxCampos.Controls.Add(this.ckbxCampo21);
@@ -150,25 +142,23 @@
             this.gpbxCampos.TabStop = false;
             this.gpbxCampos.Text = "Campos do Relatório";
             // 
-            // checkBox1
+            // btnGerarRelatorio
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(6, 45);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(54, 17);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "Nome";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(789, 26);
+            this.btnGerarRelatorio.Name = "btnGerarRelatorio";
+            this.btnGerarRelatorio.Size = new System.Drawing.Size(64, 46);
+            this.btnGerarRelatorio.TabIndex = 2;
+            this.btnGerarRelatorio.Text = "Gerar Relatório";
+            this.btnGerarRelatorio.UseVisualStyleBackColor = true;
+            this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
             // 
             // ckbxCampo23
             // 
             this.ckbxCampo23.AutoSize = true;
-            this.ckbxCampo23.Campo = null;
+            this.ckbxCampo23.Campo = resources.GetString("ckbxCampo23.Campo");
             this.ckbxCampo23.Location = new System.Drawing.Point(551, 68);
             this.ckbxCampo23.Name = "ckbxCampo23";
+            this.ckbxCampo23.Ordem = 19;
             this.ckbxCampo23.Size = new System.Drawing.Size(103, 17);
             this.ckbxCampo23.TabIndex = 19;
             this.ckbxCampo23.Text = "Total a Receber";
@@ -177,9 +167,12 @@
             // ckbxCampo22
             // 
             this.ckbxCampo22.AutoSize = true;
-            this.ckbxCampo22.Campo = null;
+            this.ckbxCampo22.Campo = ",REPLACE((SELECT SUM(CAIXA.VALOR_PAGO) FROM CAIXA WHERE CAIXA.ID_ALUNO_CURSO = AL" +
+    "UNOS_CURSOS.ID_ALUNO_CURSO AND CAIXA.QUITADO = \'S\' AND CAIXA.TIPO = \'C\'),\'.\',\',\'" +
+    ") AS RECEBIDO";
             this.ckbxCampo22.Location = new System.Drawing.Point(551, 92);
             this.ckbxCampo22.Name = "ckbxCampo22";
+            this.ckbxCampo22.Ordem = 20;
             this.ckbxCampo22.Size = new System.Drawing.Size(99, 17);
             this.ckbxCampo22.TabIndex = 20;
             this.ckbxCampo22.Text = "Total Recebido";
@@ -188,9 +181,10 @@
             // ckbxCampo21
             // 
             this.ckbxCampo21.AutoSize = true;
-            this.ckbxCampo21.Campo = null;
+            this.ckbxCampo21.Campo = resources.GetString("ckbxCampo21.Campo");
             this.ckbxCampo21.Location = new System.Drawing.Point(551, 45);
             this.ckbxCampo21.Name = "ckbxCampo21";
+            this.ckbxCampo21.Ordem = 18;
             this.ckbxCampo21.Size = new System.Drawing.Size(100, 17);
             this.ckbxCampo21.TabIndex = 18;
             this.ckbxCampo21.Text = "Total em Atraso";
@@ -199,9 +193,10 @@
             // ckbxCampo20
             // 
             this.ckbxCampo20.AutoSize = true;
-            this.ckbxCampo20.Campo = null;
+            this.ckbxCampo20.Campo = resources.GetString("ckbxCampo20.Campo");
             this.ckbxCampo20.Location = new System.Drawing.Point(660, 69);
             this.ckbxCampo20.Name = "ckbxCampo20";
+            this.ckbxCampo20.Ordem = 22;
             this.ckbxCampo20.Size = new System.Drawing.Size(113, 17);
             this.ckbxCampo20.TabIndex = 22;
             this.ckbxCampo20.Text = "Parcelas a Vencer";
@@ -210,9 +205,10 @@
             // ckbxCampo19
             // 
             this.ckbxCampo19.AutoSize = true;
-            this.ckbxCampo19.Campo = null;
+            this.ckbxCampo19.Campo = resources.GetString("ckbxCampo19.Campo");
             this.ckbxCampo19.Location = new System.Drawing.Point(660, 45);
             this.ckbxCampo19.Name = "ckbxCampo19";
+            this.ckbxCampo19.Ordem = 21;
             this.ckbxCampo19.Size = new System.Drawing.Size(114, 17);
             this.ckbxCampo19.TabIndex = 21;
             this.ckbxCampo19.Text = "Parcelas Vencidas";
@@ -255,6 +251,7 @@
     "D_ALUNO_CURSO = ALUNOS_CURSOS.ID_ALUNO_CURSO),\'.\',\',\') AS MEDIA";
             this.ckbxCampo18.Location = new System.Drawing.Point(376, 115);
             this.ckbxCampo18.Name = "ckbxCampo18";
+            this.ckbxCampo18.Ordem = 17;
             this.ckbxCampo18.Size = new System.Drawing.Size(55, 17);
             this.ckbxCampo18.TabIndex = 17;
             this.ckbxCampo18.Text = "Média";
@@ -266,6 +263,7 @@
             this.ckbxCampo17.Campo = resources.GetString("ckbxCampo17.Campo");
             this.ckbxCampo17.Location = new System.Drawing.Point(376, 92);
             this.ckbxCampo17.Name = "ckbxCampo17";
+            this.ckbxCampo17.Ordem = 16;
             this.ckbxCampo17.Size = new System.Drawing.Size(152, 17);
             this.ckbxCampo17.TabIndex = 16;
             this.ckbxCampo17.Text = "Aulas / Presenças / Faltas";
@@ -277,6 +275,7 @@
             this.ckbxCampo16.Campo = ", TURMAS.DATA_INICIAL, TURMAS.DATA_FINAL";
             this.ckbxCampo16.Location = new System.Drawing.Point(376, 69);
             this.ckbxCampo16.Name = "ckbxCampo16";
+            this.ckbxCampo16.Ordem = 15;
             this.ckbxCampo16.Size = new System.Drawing.Size(122, 17);
             this.ckbxCampo16.TabIndex = 15;
             this.ckbxCampo16.Text = "Início/Fim da Turma";
@@ -288,6 +287,7 @@
             this.ckbxCampo15.Campo = ", TURMAS.NOME AS TURMA";
             this.ckbxCampo15.Location = new System.Drawing.Point(376, 45);
             this.ckbxCampo15.Name = "ckbxCampo15";
+            this.ckbxCampo15.Ordem = 14;
             this.ckbxCampo15.Size = new System.Drawing.Size(56, 17);
             this.ckbxCampo15.TabIndex = 14;
             this.ckbxCampo15.Text = "Turma";
@@ -299,6 +299,7 @@
             this.ckbxCampo14.Campo = ", ALUNOS.RESPONSAVEL_RG";
             this.ckbxCampo14.Location = new System.Drawing.Point(250, 92);
             this.ckbxCampo14.Name = "ckbxCampo14";
+            this.ckbxCampo14.Ordem = 12;
             this.ckbxCampo14.Size = new System.Drawing.Size(107, 17);
             this.ckbxCampo14.TabIndex = 12;
             this.ckbxCampo14.Text = "RG Responsável";
@@ -310,6 +311,7 @@
             this.ckbxCampo10.Campo = ", ALUNOS.DATA_CADASTRO";
             this.ckbxCampo10.Location = new System.Drawing.Point(135, 138);
             this.ckbxCampo10.Name = "ckbxCampo10";
+            this.ckbxCampo10.Ordem = 9;
             this.ckbxCampo10.Size = new System.Drawing.Size(109, 17);
             this.ckbxCampo10.TabIndex = 9;
             this.ckbxCampo10.Text = "Data do Cadastro";
@@ -322,6 +324,7 @@
     " \'FORMADO\' WHEN \'M\' THEN \'FORMADO\' END) AS SITUACAO";
             this.ckbxCampo9.Location = new System.Drawing.Point(135, 92);
             this.ckbxCampo9.Name = "ckbxCampo9";
+            this.ckbxCampo9.Ordem = 7;
             this.ckbxCampo9.Size = new System.Drawing.Size(68, 17);
             this.ckbxCampo9.TabIndex = 7;
             this.ckbxCampo9.Text = "Situação";
@@ -333,6 +336,7 @@
             this.ckbxCampo13.Campo = ", ALUNOS.SPC, ALUNOS.SPC_DATA";
             this.ckbxCampo13.Location = new System.Drawing.Point(250, 115);
             this.ckbxCampo13.Name = "ckbxCampo13";
+            this.ckbxCampo13.Ordem = 13;
             this.ckbxCampo13.Size = new System.Drawing.Size(47, 17);
             this.ckbxCampo13.TabIndex = 13;
             this.ckbxCampo13.Text = "SPC";
@@ -344,6 +348,7 @@
             this.ckbxCampo5.Campo = ",ALUNOS.DATA_NASCIMENTO";
             this.ckbxCampo5.Location = new System.Drawing.Point(6, 138);
             this.ckbxCampo5.Name = "ckbxCampo5";
+            this.ckbxCampo5.Ordem = 4;
             this.ckbxCampo5.Size = new System.Drawing.Size(123, 17);
             this.ckbxCampo5.TabIndex = 4;
             this.ckbxCampo5.Text = "Data de Nascimento";
@@ -355,6 +360,7 @@
             this.ckbxCampo8.Campo = ", ALUNOS.EMAIL";
             this.ckbxCampo8.Location = new System.Drawing.Point(135, 115);
             this.ckbxCampo8.Name = "ckbxCampo8";
+            this.ckbxCampo8.Ordem = 8;
             this.ckbxCampo8.Size = new System.Drawing.Size(54, 17);
             this.ckbxCampo8.TabIndex = 8;
             this.ckbxCampo8.Text = "E-mail";
@@ -366,6 +372,7 @@
             this.ckbxCampo12.Campo = ",ALUNOS.RESPONSAVEL";
             this.ckbxCampo12.Location = new System.Drawing.Point(250, 45);
             this.ckbxCampo12.Name = "ckbxCampo12";
+            this.ckbxCampo12.Ordem = 10;
             this.ckbxCampo12.Size = new System.Drawing.Size(88, 17);
             this.ckbxCampo12.TabIndex = 10;
             this.ckbxCampo12.Text = "Responsável";
@@ -377,6 +384,7 @@
             this.ckbxCampo3.Campo = ",ALUNOS.RG";
             this.ckbxCampo3.Location = new System.Drawing.Point(6, 92);
             this.ckbxCampo3.Name = "ckbxCampo3";
+            this.ckbxCampo3.Ordem = 2;
             this.ckbxCampo3.Size = new System.Drawing.Size(42, 17);
             this.ckbxCampo3.TabIndex = 2;
             this.ckbxCampo3.Text = "RG";
@@ -389,6 +397,7 @@
     " CIDADES.DESCRICAO AS CIDADE, CIDADES.ESTADO AS UF, ALUNOS.CEP";
             this.ckbxCampo7.Location = new System.Drawing.Point(135, 45);
             this.ckbxCampo7.Name = "ckbxCampo7";
+            this.ckbxCampo7.Ordem = 5;
             this.ckbxCampo7.Size = new System.Drawing.Size(72, 17);
             this.ckbxCampo7.TabIndex = 5;
             this.ckbxCampo7.Text = "Endereço";
@@ -400,6 +409,7 @@
             this.ckbxCampo11.Campo = ",REPLACE(REPLACE(ALUNOS.RESPONSAVEL_CPF, \'.\',\'\'),\'-\',\'\') AS RESPONSAVEL_CPF";
             this.ckbxCampo11.Location = new System.Drawing.Point(250, 69);
             this.ckbxCampo11.Name = "ckbxCampo11";
+            this.ckbxCampo11.Ordem = 11;
             this.ckbxCampo11.Size = new System.Drawing.Size(111, 17);
             this.ckbxCampo11.TabIndex = 11;
             this.ckbxCampo11.Text = "CPF Responsável";
@@ -411,6 +421,7 @@
             this.ckbxCampo4.Campo = ",ALUNOS.CPF";
             this.ckbxCampo4.Location = new System.Drawing.Point(6, 115);
             this.ckbxCampo4.Name = "ckbxCampo4";
+            this.ckbxCampo4.Ordem = 3;
             this.ckbxCampo4.Size = new System.Drawing.Size(46, 17);
             this.ckbxCampo4.TabIndex = 3;
             this.ckbxCampo4.Text = "CPF";
@@ -422,6 +433,7 @@
             this.ckbxCampo6.Campo = ",ALUNOS.TELEFONE, ALUNOS.CELULAR, ALUNOS.TELEFONE_CONTATO";
             this.ckbxCampo6.Location = new System.Drawing.Point(135, 69);
             this.ckbxCampo6.Name = "ckbxCampo6";
+            this.ckbxCampo6.Ordem = 6;
             this.ckbxCampo6.Size = new System.Drawing.Size(73, 17);
             this.ckbxCampo6.TabIndex = 6;
             this.ckbxCampo6.Text = "Telefones";
@@ -433,6 +445,7 @@
             this.ckbxCampo1.Campo = ",ALUNOS.MATRICULA";
             this.ckbxCampo1.Location = new System.Drawing.Point(6, 69);
             this.ckbxCampo1.Name = "ckbxCampo1";
+            this.ckbxCampo1.Ordem = 1;
             this.ckbxCampo1.Size = new System.Drawing.Size(71, 17);
             this.ckbxCampo1.TabIndex = 1;
             this.ckbxCampo1.Text = "Matrícula";
@@ -448,6 +461,31 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // ckbxCampo2
+            // 
+            this.ckbxCampo2.AutoSize = true;
+            this.ckbxCampo2.Campo = "ALUNOS.NOME";
+            this.ckbxCampo2.Checked = true;
+            this.ckbxCampo2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbxCampo2.Enabled = false;
+            this.ckbxCampo2.Location = new System.Drawing.Point(6, 45);
+            this.ckbxCampo2.Name = "ckbxCampo2";
+            this.ckbxCampo2.Ordem = 0;
+            this.ckbxCampo2.Size = new System.Drawing.Size(54, 17);
+            this.ckbxCampo2.TabIndex = 23;
+            this.ckbxCampo2.Text = "Nome";
+            this.ckbxCampo2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(789, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Limpar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,7 +493,7 @@
             this.ClientSize = new System.Drawing.Size(1359, 618);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Relatórios DKSOFT";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -498,7 +536,8 @@
         private ckbxCampo ckbxCampo11;
         private ckbxCampo ckbxCampo6;
         private System.Windows.Forms.Button btnGerarRelatorio;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private ckbxCampo ckbxCampo2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
