@@ -33,6 +33,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gpbxCampos = new System.Windows.Forms.GroupBox();
+            this.tbxFiltro = new System.Windows.Forms.TextBox();
+            this.cmbxFiltro = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.ckbxCampo2 = new RelatóriosDKSOFT.ckbxCampo();
             this.btnGerarRelatorio = new System.Windows.Forms.Button();
@@ -41,6 +43,7 @@
             this.ckbxCampo21 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo20 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo19 = new RelatóriosDKSOFT.ckbxCampo();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,9 +65,6 @@
             this.ckbxCampo6 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo1 = new RelatóriosDKSOFT.ckbxCampo();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cmbxFiltro = new System.Windows.Forms.ComboBox();
-            this.tbxFiltro = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -148,6 +148,22 @@
             this.gpbxCampos.TabIndex = 0;
             this.gpbxCampos.TabStop = false;
             this.gpbxCampos.Text = "Campos do Relatório";
+            // 
+            // tbxFiltro
+            // 
+            this.tbxFiltro.Location = new System.Drawing.Point(794, 67);
+            this.tbxFiltro.Name = "tbxFiltro";
+            this.tbxFiltro.Size = new System.Drawing.Size(195, 20);
+            this.tbxFiltro.TabIndex = 26;
+            // 
+            // cmbxFiltro
+            // 
+            this.cmbxFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxFiltro.FormattingEnabled = true;
+            this.cmbxFiltro.Location = new System.Drawing.Point(794, 41);
+            this.cmbxFiltro.Name = "cmbxFiltro";
+            this.cmbxFiltro.Size = new System.Drawing.Size(195, 21);
+            this.cmbxFiltro.TabIndex = 25;
             // 
             // button1
             // 
@@ -245,6 +261,16 @@
             this.ckbxCampo19.TabIndex = 21;
             this.ckbxCampo19.Text = "Parcelas Vencidas";
             this.ckbxCampo19.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(791, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Filtros";
             // 
             // label3
             // 
@@ -492,32 +518,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // cmbxFiltro
-            // 
-            this.cmbxFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxFiltro.FormattingEnabled = true;
-            this.cmbxFiltro.Location = new System.Drawing.Point(794, 41);
-            this.cmbxFiltro.Name = "cmbxFiltro";
-            this.cmbxFiltro.Size = new System.Drawing.Size(195, 21);
-            this.cmbxFiltro.TabIndex = 25;
-            // 
-            // tbxFiltro
-            // 
-            this.tbxFiltro.Location = new System.Drawing.Point(794, 67);
-            this.tbxFiltro.Name = "tbxFiltro";
-            this.tbxFiltro.Size = new System.Drawing.Size(195, 20);
-            this.tbxFiltro.TabIndex = 26;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(791, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Filtros";
             // 
             // Form1
             // 

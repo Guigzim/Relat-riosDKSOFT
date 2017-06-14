@@ -11,3 +11,4 @@ c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\Relatóri
 C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\IntervaloDatas.dll
 C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\IntervaloDatas.pdb
 C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.ResolveComReference.cache
+C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csprojResolveAssemblyReference.cache
