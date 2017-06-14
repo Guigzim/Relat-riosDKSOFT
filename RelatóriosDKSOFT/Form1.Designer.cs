@@ -33,6 +33,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gpbxCampos = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ckbxCampo2 = new RelatóriosDKSOFT.ckbxCampo();
             this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.ckbxCampo23 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo22 = new RelatóriosDKSOFT.ckbxCampo();
@@ -60,8 +62,9 @@
             this.ckbxCampo6 = new RelatóriosDKSOFT.ckbxCampo();
             this.ckbxCampo1 = new RelatóriosDKSOFT.ckbxCampo();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.ckbxCampo2 = new RelatóriosDKSOFT.ckbxCampo();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmbxFiltro = new System.Windows.Forms.ComboBox();
+            this.tbxFiltro = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -95,6 +98,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -106,6 +110,8 @@
             // 
             // gpbxCampos
             // 
+            this.gpbxCampos.Controls.Add(this.tbxFiltro);
+            this.gpbxCampos.Controls.Add(this.cmbxFiltro);
             this.gpbxCampos.Controls.Add(this.button1);
             this.gpbxCampos.Controls.Add(this.ckbxCampo2);
             this.gpbxCampos.Controls.Add(this.btnGerarRelatorio);
@@ -114,6 +120,7 @@
             this.gpbxCampos.Controls.Add(this.ckbxCampo21);
             this.gpbxCampos.Controls.Add(this.ckbxCampo20);
             this.gpbxCampos.Controls.Add(this.ckbxCampo19);
+            this.gpbxCampos.Controls.Add(this.label4);
             this.gpbxCampos.Controls.Add(this.label3);
             this.gpbxCampos.Controls.Add(this.label2);
             this.gpbxCampos.Controls.Add(this.label1);
@@ -142,15 +149,40 @@
             this.gpbxCampos.TabStop = false;
             this.gpbxCampos.Text = "Campos do Relatório";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1017, 78);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Limpar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ckbxCampo2
+            // 
+            this.ckbxCampo2.AutoSize = true;
+            this.ckbxCampo2.Campo = "ALUNOS.NOME";
+            this.ckbxCampo2.Checked = true;
+            this.ckbxCampo2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbxCampo2.Enabled = false;
+            this.ckbxCampo2.Location = new System.Drawing.Point(6, 45);
+            this.ckbxCampo2.Name = "ckbxCampo2";
+            this.ckbxCampo2.Ordem = 0;
+            this.ckbxCampo2.Size = new System.Drawing.Size(54, 17);
+            this.ckbxCampo2.TabIndex = 23;
+            this.ckbxCampo2.Text = "Nome";
+            this.ckbxCampo2.UseVisualStyleBackColor = true;
+            // 
             // btnGerarRelatorio
             // 
-            this.btnGerarRelatorio.Location = new System.Drawing.Point(789, 26);
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(1017, 25);
             this.btnGerarRelatorio.Name = "btnGerarRelatorio";
             this.btnGerarRelatorio.Size = new System.Drawing.Size(64, 46);
             this.btnGerarRelatorio.TabIndex = 2;
             this.btnGerarRelatorio.Text = "Gerar Relatório";
             this.btnGerarRelatorio.UseVisualStyleBackColor = true;
-            this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
+            this.btnGerarRelatorio.Click += new System.EventHandler(this.BtnGerarRelatorio_Click);
             // 
             // ckbxCampo23
             // 
@@ -461,30 +493,31 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // ckbxCampo2
+            // cmbxFiltro
             // 
-            this.ckbxCampo2.AutoSize = true;
-            this.ckbxCampo2.Campo = "ALUNOS.NOME";
-            this.ckbxCampo2.Checked = true;
-            this.ckbxCampo2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbxCampo2.Enabled = false;
-            this.ckbxCampo2.Location = new System.Drawing.Point(6, 45);
-            this.ckbxCampo2.Name = "ckbxCampo2";
-            this.ckbxCampo2.Ordem = 0;
-            this.ckbxCampo2.Size = new System.Drawing.Size(54, 17);
-            this.ckbxCampo2.TabIndex = 23;
-            this.ckbxCampo2.Text = "Nome";
-            this.ckbxCampo2.UseVisualStyleBackColor = true;
+            this.cmbxFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxFiltro.FormattingEnabled = true;
+            this.cmbxFiltro.Location = new System.Drawing.Point(794, 41);
+            this.cmbxFiltro.Name = "cmbxFiltro";
+            this.cmbxFiltro.Size = new System.Drawing.Size(195, 21);
+            this.cmbxFiltro.TabIndex = 25;
             // 
-            // button1
+            // tbxFiltro
             // 
-            this.button1.Location = new System.Drawing.Point(789, 79);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Limpar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.tbxFiltro.Location = new System.Drawing.Point(794, 67);
+            this.tbxFiltro.Name = "tbxFiltro";
+            this.tbxFiltro.Size = new System.Drawing.Size(195, 20);
+            this.tbxFiltro.TabIndex = 26;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(791, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Filtros";
             // 
             // Form1
             // 
@@ -492,6 +525,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 618);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Relatórios DKSOFT";
             this.tabControl1.ResumeLayout(false);
@@ -538,6 +572,9 @@
         private System.Windows.Forms.Button btnGerarRelatorio;
         private ckbxCampo ckbxCampo2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cmbxFiltro;
+        private System.Windows.Forms.TextBox tbxFiltro;
+        private System.Windows.Forms.Label label4;
     }
 }
 

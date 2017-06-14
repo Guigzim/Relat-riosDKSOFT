@@ -1,0 +1,13 @@
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\RelatóriosDKSOFT.exe.config
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\RelatóriosDKSOFT.exe
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\RelatóriosDKSOFT.pdb
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.Form1.resources
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.Properties.Resources.resources
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.GenerateResource.Cache
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.exe
+c:\users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.pdb
+C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\IntervaloDatas.dll
+C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\IntervaloDatas.pdb
+C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.ResolveComReference.cache

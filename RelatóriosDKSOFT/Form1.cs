@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using IntervaloDatas;
 
+
 namespace RelatóriosDKSOFT
 {
     public partial class Form1 : Form
@@ -17,9 +18,12 @@ namespace RelatóriosDKSOFT
         public Form1()
         {
             InitializeComponent();
+            preencheCmbxFiltro();
+            
+
         }
 
-        private void btnGerarRelatorio_Click(object sender, EventArgs e)
+        private void BtnGerarRelatorio_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
             try
@@ -58,6 +62,10 @@ namespace RelatóriosDKSOFT
             }
             str.Append(@" FROM ALUNOS LEFT JOIN ALUNOS_CURSOS ON ALUNOS.ID_ALUNO = ALUNOS_CURSOS.ID_ALUNO LEFT JOIN TURMAS ON TURMAS.ID_TURMA = ALUNOS_CURSOS.ID_TURMA LEFT JOIN CIDADES ON ALUNOS.ID_CIDADE = CIDADES.ID_CIDADE ");
             str.Append(@" WHERE ALUNOS.TIPO = 'AL'");
+            if (cmbxFiltro.SelectedIndex != 0)
+            {
+                str.Append(geraFiltro());
+            }
 
             return str.ToString();
         }
@@ -72,10 +80,28 @@ namespace RelatóriosDKSOFT
                     item.Checked = false;
                 }
             }
+            cmbxFiltro.SelectedIndex = 0;
+            tbxFiltro.Text = string.Empty;
         }
         public string geraFiltro()
         {
+            string FiltroSelecionado = ((Filtro)cmbxFiltro.SelectedItem).Comando;
+            return string.Format(FiltroSelecionado, tbxFiltro.Text.ToUpper());
 
+        }
+        public void preencheCmbxFiltro()
+        {
+            List<Filtro> filtros = new List<Filtro>();
+            filtros.Add(new Filtro { Nome = "SELECIONE", Comando = "" });
+            filtros.Add(new Filtro { Nome = "ALUNO", Comando = " AND ALUNOS.NOME LIKE '%{0}%'" });
+            filtros.Add(new Filtro { Nome = "RESPONSAVEL", Comando = " AND ALUNOS.RESPONSAVEL LIKE '%{0}%'" });
+            filtros.Add(new Filtro { Nome = "TELEFONE", Comando = " AND (TELEFONE LIKE '%{0}%' OR CELULAR LIKE '%{0}%' OR TELEFONE_CONTATO LIKE '%{0}%')" });
+            filtros.Add(new Filtro { Nome = "TURMA", Comando = " AND TURMAS.NOME LIKE '%{0}%'" });
+           // cmbxFiltro.Items.Add(new Filtro { Nome = "SELECIONE", Comando = "" });
+            cmbxFiltro.DataSource = filtros;
+            cmbxFiltro.DisplayMember = "Nome";
+    
+            cmbxFiltro.SelectedIndex = 0;
 
         }
     }
