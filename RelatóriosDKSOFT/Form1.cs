@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using IntervaloDatas;
-
+using System.Diagnostics;
 
 namespace RelatóriosDKSOFT
 {
@@ -31,12 +31,17 @@ namespace RelatóriosDKSOFT
                 string select = gerarSelect();
 
                 DbExecuter exec = new DbExecuter();
+                
+                Stopwatch stp = new Stopwatch();
+                stp.Start();
                 dataGridView1.DataSource = exec.getData(select);
-                               
+                stp.Stop();
+
+                saveLog(stp.Elapsed.TotalSeconds, select);
             }
             catch (Exception err)
             {
-
+                errorLog(err.Message);
                 MessageBox.Show(err.Message);
             }
           
@@ -69,7 +74,6 @@ namespace RelatóriosDKSOFT
 
             return str.ToString();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
@@ -102,6 +106,45 @@ namespace RelatóriosDKSOFT
             cmbxFiltro.DisplayMember = "Nome";
     
             cmbxFiltro.SelectedIndex = 0;
+
+        }
+        public void saveLog(double time, string select)
+        {
+            FileStream fs = new FileStream("SelectsLog.txt", FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs);
+            
+
+            string computador = System.Windows.Forms.SystemInformation.ComputerName;
+            string usuario = System.Windows.Forms.SystemInformation.UserName;
+
+
+            //string log = string.Format("TEMPO SELECT: {3} segundos | LINHA DE COMANDO: {4}", computador,usuario, DateTime.Now.ToShortDateString(), time, select);
+
+            
+            sw.WriteLine(string.Format("DATA: {0}", DateTime.Now));
+            sw.WriteLine(string.Format("COMPUTADOR: {0}", computador));
+            sw.WriteLine(string.Format("USUARIO: {0}", usuario));
+            sw.WriteLine(string.Format("TEMPO SELECT: {0} segundos",time));
+            sw.WriteLine(string.Format("LINHA DE COMANDO: {0}",select));
+            sw.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            sw.Close();
+            
+
+
+
+        }
+        public void errorLog(string erro)
+        {
+            string computador = System.Windows.Forms.SystemInformation.ComputerName;
+            string usuario = System.Windows.Forms.SystemInformation.UserName;
+
+            FileStream fs = new FileStream("SelectsLog.txt", FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine(string.Format("DATA: {0}", DateTime.Now));
+            sw.WriteLine(string.Format("COMPUTADOR: {0}", computador));
+            sw.WriteLine(string.Format("USUARIO: {0}", usuario));
+            sw.WriteLine(string.Format("ERRO: {0}", erro));
+            sw.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         }
     }
