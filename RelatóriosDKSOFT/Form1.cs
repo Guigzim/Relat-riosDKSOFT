@@ -26,13 +26,14 @@ namespace RelatóriosDKSOFT
         private void BtnGerarRelatorio_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
+            Stopwatch stp = new Stopwatch();
             try
             {
                 string select = gerarSelect();
 
                 DbExecuter exec = new DbExecuter();
                 
-                Stopwatch stp = new Stopwatch();
+                
                 stp.Start();
                 dataGridView1.DataSource = exec.getData(select);
                 stp.Stop();
@@ -41,6 +42,7 @@ namespace RelatóriosDKSOFT
             }
             catch (Exception err)
             {
+                stp.Stop();
                 errorLog(err.Message);
                 MessageBox.Show(err.Message);
             }
