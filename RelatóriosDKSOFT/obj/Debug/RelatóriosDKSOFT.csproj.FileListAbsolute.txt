@@ -12,3 +12,17 @@ C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\Relatóri
 C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\bin\Debug\IntervaloDatas.pdb
 C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.ResolveComReference.cache
 C:\Users\guilh\documents\visual studio 2017\Projects\RelatóriosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csprojResolveAssemblyReference.cache
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\bin\Debug\RelatóriosDKSOFT.exe.config
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\bin\Debug\RelatóriosDKSOFT.exe
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\bin\Debug\RelatóriosDKSOFT.pdb
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.ResolveComReference.cache
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.Double_Date.resources
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.Form1.resources
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.Properties.Resources.resources
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.GenerateResource.cache
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.CoreCompileInputs.cache
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.csproj.CopyComplete
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.exe
+C:\Users\guilh\Source\Repos\Guigzim\Relat-riosDKSOFT\RelatóriosDKSOFT\obj\Debug\RelatóriosDKSOFT.pdb

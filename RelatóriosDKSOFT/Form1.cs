@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using IntervaloDatas;
 using System.Diagnostics;
+
 
 namespace RelatóriosDKSOFT
 {
@@ -19,25 +16,32 @@ namespace RelatóriosDKSOFT
         {
             InitializeComponent();
             preencheCmbxFiltro();
+            preencheCmbxFinanceiro();
+           
             
 
         }
 
         private void BtnGerarRelatorio_Click(object sender, EventArgs e)
         {
+            //Define grid como null
             dataGridView1.DataSource = null;
+            //instancia Relórgio
             Stopwatch stp = new Stopwatch();
             try
             {
+                //gera o select
                 string select = gerarSelect();
-
+                //instancia o exec da consulta no banco
                 DbExecuter exec = new DbExecuter();
                 
-                
+                //inicia relógio
                 stp.Start();
+                //faz a consulta passando o select como parametro
                 dataGridView1.DataSource = exec.getData(select);
+                //finaliza relógio
                 stp.Stop();
-
+                //salva o log
                 saveLog(stp.Elapsed.TotalSeconds, select);
             }
             catch (Exception err)
@@ -95,6 +99,12 @@ namespace RelatóriosDKSOFT
             return string.Format(FiltroSelecionado, tbxFiltro.Text.ToUpper());
 
         }
+        public string geraFiltroFinanceiro()
+        {
+            string FiltroSelecionado = ((Filtro)cbxFiltroFinanceiro.SelectedItem).Comando;
+            return string.Format(FiltroSelecionado, tbxFiltroFinanceiro.Text.ToUpper());
+
+        }
         public void preencheCmbxFiltro()
         {
             List<Filtro> filtros = new List<Filtro>();
@@ -108,6 +118,19 @@ namespace RelatóriosDKSOFT
             cmbxFiltro.DisplayMember = "Nome";
     
             cmbxFiltro.SelectedIndex = 0;
+
+        }
+        public void preencheCmbxFinanceiro()
+        {
+            List<Filtro> filtros = new List<Filtro>();
+            filtros.Add(new Filtro { Nome = "SELECIONE", Comando = "" });
+            filtros.Add(new Filtro { Nome = "ALUNO", Comando = " AND ALUNOS.NOME LIKE '%{0}%'" });
+            filtros.Add(new Filtro { Nome = "TURMA", Comando = " AND TURMAS.NOME LIKE '%{0}%'" });
+            // cmbxFiltro.Items.Add(new Filtro { Nome = "SELECIONE", Comando = "" });
+            cbxFiltroFinanceiro.DataSource = filtros;
+            cbxFiltroFinanceiro.DisplayMember = "Nome";
+
+            cbxFiltroFinanceiro.SelectedIndex = 0;
 
         }
         public void saveLog(double time, string select)
@@ -148,6 +171,77 @@ namespace RelatóriosDKSOFT
             sw.WriteLine(string.Format("ERRO: {0}", erro));
             sw.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+        }
+
+        private void BtnGerarRelatorioFinanceiro_Click(object sender, EventArgs e)
+        {
+            //Define grid como null
+            dgvFinanceiro.DataSource = null;
+            //instancia Relórgio
+            Stopwatch stp = new Stopwatch();
+            string select = gerarSelectFinanceiro();
+            try
+            {
+                //gera o select
+                
+                //instancia o exec da consulta no banco
+                DbExecuter exec = new DbExecuter();
+
+                //inicia relógio
+                stp.Start();
+                //faz a consulta passando o select como parametro
+                dgvFinanceiro.DataSource = exec.getData(select);
+                //finaliza relógio
+                stp.Stop();
+                //salva o log
+                saveLog(stp.Elapsed.TotalSeconds, select);
+            }
+            catch (Exception err)
+            {
+                stp.Stop();
+                errorLog(err.Message);
+                MessageBox.Show(string.Format("Erro: {0} \n Select: {1}", err.Message, select));
+            }
+
+
+        }
+
+        private string gerarSelectFinanceiro()
+        {
+            StringBuilder str = new StringBuilder();
+
+            str.Append("SELECT ");
+            var test = from c in gpbxCamposFinanceiro.Controls.OfType<ckbxCampo>() where c.Checked orderby c.Ordem select c;
+            foreach (ckbxCampo item in test)
+            {
+                str.Append(((ckbxCampo)item).Campo);
+            }
+            str.Append(@" FROM CAIXA ");
+            str.Append(@"LEFT JOIN ALUNOS ON ALUNOS.ID_ALUNO = CAIXA.ID_ALUNO ");
+            str.Append(@"LEFT JOIN ALUNOS_CURSOS ON ALUNOS.ID_ALUNO = ALUNOS_CURSOS.ID_ALUNO ");
+            str.Append(@"LEFT JOIN CIDADES ON CIDADES.ID_CIDADE = ALUNOS.ID_CIDADE ");
+            str.Append(@"LEFT JOIN TURMAS ON TURMAS.ID_TURMA = ALUNOS_CURSOS.ID_TURMA ");
+            str.Append(@"WHERE ALUNOS.TIPO = 'AL'");
+            if (cbxFiltroFinanceiro.SelectedIndex != 0)
+            {
+                str.Append(geraFiltroFinanceiro());
+            }
+            str.Append(string.Format(" AND CAIXA.VENCIMENTO BETWEEN '{0}' AND '{1}'", cpntDatas.Data_Inicial.ToString("yyy-MM-dd"), cpntDatas.Data_Final.ToString("yyy-MM-dd")));
+            return str.ToString();
+        }
+
+        private void BtnLimparFinanceiro_Click(object sender, EventArgs e)
+        {
+            dgvFinanceiro.DataSource = null;
+            foreach (ckbxCampo item in gpbxCamposFinanceiro.Controls.OfType<ckbxCampo>())
+            {
+                if (item.Ordem > 0 && item.Checked)
+                {
+                    item.Checked = false;
+                }
+            }
+            cbxFiltroFinanceiro.SelectedIndex = 0;
+            tbxFiltroFinanceiro.Text = string.Empty;
         }
     }
 }
