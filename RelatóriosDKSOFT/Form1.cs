@@ -22,6 +22,7 @@ namespace RelatóriosDKSOFT
 
         }
 
+        #region Relatório de Cadastro
         private void BtnGerarRelatorio_Click(object sender, EventArgs e)
         {
             //Define grid como null
@@ -99,12 +100,6 @@ namespace RelatóriosDKSOFT
             return string.Format(FiltroSelecionado, tbxFiltro.Text.ToUpper());
 
         }
-        public string geraFiltroFinanceiro()
-        {
-            string FiltroSelecionado = ((Filtro)cbxFiltroFinanceiro.SelectedItem).Comando;
-            return string.Format(FiltroSelecionado, tbxFiltroFinanceiro.Text.ToUpper());
-
-        }
         public void preencheCmbxFiltro()
         {
             List<Filtro> filtros = new List<Filtro>();
@@ -120,6 +115,82 @@ namespace RelatóriosDKSOFT
             cmbxFiltro.SelectedIndex = 0;
 
         }
+        #endregion
+        #region Relatório Financeiro
+        private void BtnGerarRelatorioFinanceiro_Click(object sender, EventArgs e)
+        {
+            //Define grid como null
+            dgvFinanceiro.DataSource = null;
+            //instancia Relórgio
+            Stopwatch stp = new Stopwatch();
+            string select = gerarSelectFinanceiro();
+            try
+            {
+                //gera o select
+                
+                //instancia o exec da consulta no banco
+                DbExecuter exec = new DbExecuter();
+
+                //inicia relógio
+                stp.Start();
+                //faz a consulta passando o select como parametro
+                dgvFinanceiro.DataSource = exec.getData(select);
+                //finaliza relógio
+                stp.Stop();
+                //salva o log
+                saveLog(stp.Elapsed.TotalSeconds, select);
+            }
+            catch (Exception err)
+            {
+                stp.Stop();
+                errorLog(err.Message);
+                MessageBox.Show(err.Message);
+            }
+
+
+        }
+        private string gerarSelectFinanceiro()
+        {
+            StringBuilder str = new StringBuilder();
+
+            str.Append("SELECT ");
+            var test = from c in gpbxCamposFinanceiro.Controls.OfType<ckbxCampo>() where c.Checked orderby c.Ordem select c;
+            foreach (ckbxCampo item in test)
+            {
+                str.Append(((ckbxCampo)item).Campo);
+            }
+            str.Append(@" FROM CAIXA ");
+            str.Append(@"LEFT JOIN ALUNOS ON ALUNOS.ID_ALUNO = CAIXA.ID_ALUNO ");
+            str.Append(@"LEFT JOIN ALUNOS_CURSOS ON ALUNOS.ID_ALUNO = ALUNOS_CURSOS.ID_ALUNO ");
+            str.Append(@"LEFT JOIN CIDADES ON CIDADES.ID_CIDADE = ALUNOS.ID_CIDADE ");
+            str.Append(@"LEFT JOIN TURMAS ON TURMAS.ID_TURMA = ALUNOS_CURSOS.ID_TURMA ");
+            str.Append(@"WHERE ALUNOS.TIPO = 'AL'");
+            if (cbxFiltroFinanceiro.SelectedIndex != 0)
+            {
+                str.Append(geraFiltroFinanceiro());
+            }
+            str.Append(string.Format(" AND CAIXA.VENCIMENTO BETWEEN '{0}' AND '{1}'", cpntDatas.Data_Inicial.ToString("yyy-MM-dd"), cpntDatas.Data_Final.ToString("yyy-MM-dd")));
+            return str.ToString();
+        }
+        private void BtnLimparFinanceiro_Click(object sender, EventArgs e)
+        {
+            dgvFinanceiro.DataSource = null;
+            foreach (ckbxCampo item in gpbxCamposFinanceiro.Controls.OfType<ckbxCampo>())
+            {
+                if (item.Ordem > 0 && item.Checked)
+                {
+                    item.Checked = false;
+                }
+            }
+            cbxFiltroFinanceiro.SelectedIndex = 0;
+            tbxFiltroFinanceiro.Text = string.Empty;
+        }
+        public string geraFiltroFinanceiro()
+        {
+            string FiltroSelecionado = ((Filtro)cbxFiltroFinanceiro.SelectedItem).Comando;
+            return string.Format(FiltroSelecionado, tbxFiltroFinanceiro.Text.ToUpper());
+
+        }
         public void preencheCmbxFinanceiro()
         {
             List<Filtro> filtros = new List<Filtro>();
@@ -133,6 +204,9 @@ namespace RelatóriosDKSOFT
             cbxFiltroFinanceiro.SelectedIndex = 0;
 
         }
+        #endregion
+
+               
         public void saveLog(double time, string select)
         {
             FileStream fs = new FileStream("SelectsLog.txt", FileMode.Append);
@@ -173,75 +247,10 @@ namespace RelatóriosDKSOFT
 
         }
 
-        private void BtnGerarRelatorioFinanceiro_Click(object sender, EventArgs e)
-        {
-            //Define grid como null
-            dgvFinanceiro.DataSource = null;
-            //instancia Relórgio
-            Stopwatch stp = new Stopwatch();
-            string select = gerarSelectFinanceiro();
-            try
-            {
-                //gera o select
-                
-                //instancia o exec da consulta no banco
-                DbExecuter exec = new DbExecuter();
-
-                //inicia relógio
-                stp.Start();
-                //faz a consulta passando o select como parametro
-                dgvFinanceiro.DataSource = exec.getData(select);
-                //finaliza relógio
-                stp.Stop();
-                //salva o log
-                saveLog(stp.Elapsed.TotalSeconds, select);
-            }
-            catch (Exception err)
-            {
-                stp.Stop();
-                errorLog(err.Message);
-                MessageBox.Show(string.Format("Erro: {0} \n Select: {1}", err.Message, select));
-            }
 
 
-        }
 
-        private string gerarSelectFinanceiro()
-        {
-            StringBuilder str = new StringBuilder();
 
-            str.Append("SELECT ");
-            var test = from c in gpbxCamposFinanceiro.Controls.OfType<ckbxCampo>() where c.Checked orderby c.Ordem select c;
-            foreach (ckbxCampo item in test)
-            {
-                str.Append(((ckbxCampo)item).Campo);
-            }
-            str.Append(@" FROM CAIXA ");
-            str.Append(@"LEFT JOIN ALUNOS ON ALUNOS.ID_ALUNO = CAIXA.ID_ALUNO ");
-            str.Append(@"LEFT JOIN ALUNOS_CURSOS ON ALUNOS.ID_ALUNO = ALUNOS_CURSOS.ID_ALUNO ");
-            str.Append(@"LEFT JOIN CIDADES ON CIDADES.ID_CIDADE = ALUNOS.ID_CIDADE ");
-            str.Append(@"LEFT JOIN TURMAS ON TURMAS.ID_TURMA = ALUNOS_CURSOS.ID_TURMA ");
-            str.Append(@"WHERE ALUNOS.TIPO = 'AL'");
-            if (cbxFiltroFinanceiro.SelectedIndex != 0)
-            {
-                str.Append(geraFiltroFinanceiro());
-            }
-            str.Append(string.Format(" AND CAIXA.VENCIMENTO BETWEEN '{0}' AND '{1}'", cpntDatas.Data_Inicial.ToString("yyy-MM-dd"), cpntDatas.Data_Final.ToString("yyy-MM-dd")));
-            return str.ToString();
-        }
 
-        private void BtnLimparFinanceiro_Click(object sender, EventArgs e)
-        {
-            dgvFinanceiro.DataSource = null;
-            foreach (ckbxCampo item in gpbxCamposFinanceiro.Controls.OfType<ckbxCampo>())
-            {
-                if (item.Ordem > 0 && item.Checked)
-                {
-                    item.Checked = false;
-                }
-            }
-            cbxFiltroFinanceiro.SelectedIndex = 0;
-            tbxFiltroFinanceiro.Text = string.Empty;
-        }
     }
 }
